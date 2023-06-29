@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const viewdata = () =>{
     let view = JSON.parse(localStorage.getItem("s_data"));
@@ -64,32 +64,25 @@ function Students_data() {
     }
 
     const handleDelete = (id) =>{
-        console.log("click",id);
         let a_data = viewdata();
-        console.log("a data",a_data);
 
         let d_delete = a_data.filter((de) =>{
             if(de.id == id){
                 setDe_Details([...de_details,de])
             }
             else{
-                console.log("val",de);
                 return de.id != id;
             }
         })
         setShowdetails(d_delete);
-        // localStorage.setItem("s_data",JSON.stringify(ans));
     }
 
     const handleUpdate = (id,index) =>{
-        console.log("click",id);
         let m_data = viewdata();
-        // console.log("m_data",m_data);
+        
         let single_data = m_data.filter((sd) => {
-            // console.log("sd",sd);
             return sd.id == id;
         })
-        console.log("single_data", single_data);
         setDetails(single_data[0]);
         setUp_Details(true);
         setIndex_De(index);
